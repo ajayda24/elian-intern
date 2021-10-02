@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "concurrently --kill-others \"npx tailwindcss -i ./style.css -o ./tailwind.css -w\" \"next dev \"",
+    "build": "concurrently \"npx tailwindcss -i ./style.css -o ./tailwind.css --minify\" \"next build\"",
     "start": "next start",
     "lint": "next lint"
   },
@@ -14,7 +14,12 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.3.4",
+    "concurrently": "^6.2.1",
+    "daisyui": "^1.14.0",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2"
+    "eslint-config-next": "11.1.2",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.15"
   }
 }
